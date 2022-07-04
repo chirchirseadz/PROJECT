@@ -1,0 +1,43 @@
+{% extends 'partials/base.html' %}
+{% block title %} home page {% endblock %}
+{% block content %} 
+
+<body>
+  <!-- admin page -->
+  {% if user.is_superuser  %}
+
+  <!-- ======= Header ======= -->
+  {% include 'partials/navbar.html' %}
+  <!-- =======  end Header ======= -->
+
+  {% include 'partials/corousel.html' %}
+  <h1>admin page</h1>
+  {% include 'dashboard/dashboard.html' %}
+
+    <!-- employer page -->
+  {% elif user.is_staff  %}
+  
+  <!-- ======= Header ======= -->
+  {% include 'partials/navbar.html' %}
+  <!-- =======  end Header ======= -->
+
+  {% include 'partials/corousel.html' %}
+  <h1>Staff page </h1>
+
+  <!-- Normal User page -->
+  {% else %}
+  
+  
+  <!-- ======= Header ======= -->
+  {% include 'partials/navbar.html' %}
+  <!-- =======  end Header ======= -->
+
+  {% include 'partials/corousel.html' %}
+  <h1>Staff page </h1>
+
+
+  {% endif %}
+
+  {% endblock %}
+</body>
+
