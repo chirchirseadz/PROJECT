@@ -1,0 +1,53 @@
+
+{% extends 'partials/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %} Homepage {% endblock %}
+
+{% block  content %}
+{% include 'partials/navbar.html' %}
+
+
+<br><br>
+<div class="container mt-5">
+
+   <div class="row p-3 ">
+        <div class="col-md-12 p-2">
+            <h2 style="text-transform: uppercase; text-align: center; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;" class="text-secondary">Hunger Prediction Using Svm  </h2>
+        </div>
+   </div>
+   <div class="row">
+    <div class="col-md-3"></div>
+    <div style="text-align:center; " class="col-md-5">
+        <p style=" font-size: 20px; margin-left: 100px;" >This is a system which makes predictions on couties affected may have been 
+            affected by hunger. It uses a model tat is powered by machine learning algoritm Known as 
+            Support Vector Machine (SVM)
+        </p>
+       <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4"></div>
+            {% if user.is_authenticated %}
+            <div class="col-md-6">
+                <a class="btn btn-success btn-block float-left" href="{% url 'logout' %}">Logout</a>
+            </div>
+            
+            {% else %}
+            <div class="col-md-3">
+                <a class="btn btn-success " href="{% url 'register' %}">Register</a>
+            </div>
+            <div class="col-md-3">
+                <a class="btn btn-success btn-block float-left" href="{% url 'login' %}">Login</a>
+            </div>
+            {% endif %}
+            <div class="col-md-2"></div>
+        </div>
+       </div>
+    </div>
+    <div class="col-md-4"></div>
+   </div>
+</div>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %} Homepage {% endblock %}
+
+{% block  content %}
+{% include 'partials/navbar.html' %}
+<style>
+    #btn{
+    font-family: 'Times New Roman', Times, serif;
+    }
+    label{
+        font-size: 20px;
+    }
+</style>
+
+<div class="container mt-5">
+
+  <div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card card-title p-1">
+                <h3 style="font-family:'Times New Roman', Times, serif;" >Hunger prediction Variable Keys: </h3>
+            </div>
+            <div class="card card-body p-2">
+               
+            </div>
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-7">
+       <div class="card">
+        <div class="card card-title p-3">
+            <h2 style="font-family:'Times New Roman', Times, serif;" >Hunger prediction input variables  </h2>
+        </div>
+        <div class="card card-body">
+            <form method="post">
+                {% csrf_token %}
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        
+                        <div class="form-floating text-success">
+                            <b>{{form.county|as_crispy_field}}</b>
+                            <!-- <input type="text" class="form-control" id="name" placeholder="Your Name">
+                            <label for="name">Your Name</label> -->
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating text-success">
+                            <b>{{form.population|as_crispy_field}}</b>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-floating text-success">
+                            <b>{{form.max_temp|as_crispy_field}}</b> 
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-floating text-success">
+                            <b>{{form.min_temp|as_crispy_field}}</b> 
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-floating text-success">
+                            <b>{{form.humidity|as_crispy_field}}</b> 
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-floating text-success">
+                            <b>{{form.rainfall|as_crispy_field}}</b> 
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-floating text-success">
+                            <b>{{form.precipitation|as_crispy_field}}</b> 
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-floating text-success">
+                            <b>{{form.fishing|as_crispy_field}}</b> 
+                        </div>
+                    </div>
+
+                    
+
+
+
+                    
+                    <div class="col-12">
+                        <button id="btn" class="btn btn-success w-100 py-3" type="submit">PREDICT</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+       </div>
+    </div>
+    
+  </div>
+</div>
+
+
+
+{% endblock %}

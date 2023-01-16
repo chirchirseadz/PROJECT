@@ -1,0 +1,28 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %} Prediction Results Page{% endblock %}
+
+{% block  content %}
+{% include 'partials/navbar.html' %}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+             <div class="card card-title p-3">
+                 <h2 style="text-align: center; font-family:'Times New Roman', Times, serif;" >Hunger prediction Results  </h2>
+             </div>
+             <div class="card card-body">
+                
+
+                {% for result in results %}
+                {{result.county}}
+                {% endfor %}
+             </div>
+            </div>
+         </div>
+    </div>
+</div>
+
+{% endblock %}
