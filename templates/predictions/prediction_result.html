@@ -14,11 +14,50 @@
                  <h2 style="text-align: center; font-family:'Times New Roman', Times, serif;" >Hunger prediction Results  </h2>
              </div>
              <div class="card card-body">
-                
-
-                {% for result in results %}
-                {{result.county}}
-                {% endfor %}
+                {% if result_count == 0 %} 
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-12 alert alert-info">
+                      <h1 style="text-align: center; font-family: 'Times New Roman', Times, serif;">There are no predictions made </h1>
+                    </div>
+                  </div>
+                </div>
+                {% else %}
+                  <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th class="text-primary" scope="col">NO:</th>
+                        <b><th class="text-success" scope="col">Population</th></b>
+                        <th class="text-success" scope="col">Maximum Temprature(degrees)</th>
+                        <th class="text-success" scope="col">Minimum temprature(degrees)</th>
+                        <th class="text-success" scope="col">Humidity(%)</th>
+                        <th class="text-success" scope="col">Rainfall(%)</th>
+                        <th class="text-success" scope="col">Precipitation(%)</th>
+                        <th class="text-success" scope="col">Fishing</th>
+                        <th class="text-danger" scope="col">Results</th>
+                        <th class="text-primary" scope="col">Accuracy</th>
+                        
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for result in results %}  
+                      <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td>{{result.population}}</td>
+                        <td>{{result.max_temp}}</td>
+                        <td>{{result.min_temp}}</td>
+                        <td>{{result.humidity}}</td>
+                        <td>{{result.rainfall}}</td>
+                        <td>{{result.precipitation}}</td>
+                        <td>{{result.fishing}}</td>
+                        <td class="text-success"><b>{{result.results}}</b></td>
+                        <td class="text-success"><b>{{result.accuracy}} %</b></td>
+                        
+                      </tr>
+                    {% endfor %}
+                    </tbody>
+                  </table>
+                {% endif %}
              </div>
             </div>
          </div>

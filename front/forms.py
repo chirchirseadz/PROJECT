@@ -6,7 +6,7 @@ class DataForm(forms.ModelForm):
 
     class Meta:
         model = Data
-        fields = ['county', 'population', 'max_temp','min_temp','humidity','rainfall','precipitation', 'fishing']
+        fields = ['population', 'max_temp','min_temp','humidity','rainfall','precipitation', 'fishing']
 
         labels = {
             'max_temp':'Maximum Temprature(degrees)',
