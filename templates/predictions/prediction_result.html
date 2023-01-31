@@ -8,17 +8,19 @@
 
 <div class="container mt-5">
     <div class="row">
+    {% include 'partials/messages.html' %}
         <div class="col-md-12">
             <div class="card">
              <div class="card card-title p-3">
+              
                  <h2 style="text-align: center; font-family:'Times New Roman', Times, serif;" >Hunger prediction Results  </h2>
              </div>
              <div class="card card-body">
                 {% if result_count == 0 %} 
                 <div class="container">
                   <div class="row">
-                    <div class="col-md-12 alert alert-info">
-                      <h1 style="text-align: center; font-family: 'Times New Roman', Times, serif;">There are no predictions made </h1>
+                    <div class="col-md-12 alert alert-danger">
+                      <h1 style="text-align: center; font-family: 'Times New Roman', Times, serif;">There are no predictions !! </h1>
                     </div>
                   </div>
                 </div>
@@ -50,8 +52,11 @@
                         <td>{{result.rainfall}}</td>
                         <td>{{result.precipitation}}</td>
                         <td>{{result.fishing}}</td>
-                        <td class="text-success"><b>{{result.results}}</b></td>
-                        <td class="text-success"><b>{{result.accuracy}} %</b></td>
+                        <td class="text-primary"><b>{{result.results}}</b></td>
+                        <td class="text-secondary"><b>{{result.accuracy}} %</b></td>
+                        <td ><a class="btn btn-outline-danger" href="{% url 'delete_result' result.id %}"> Del</a></td>
+
+
                         
                       </tr>
                     {% endfor %}

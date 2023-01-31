@@ -2,15 +2,15 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from . forms import DataForm
 from .models import Data
-from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth.decorators import login_required   
+from django.contrib import messages
 
 # algorithm dependencies
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection  import train_test_split
-from sklearn import svm
+from sklearn import svm 
 from sklearn.metrics import accuracy_score
 import joblib
 
@@ -79,6 +79,7 @@ def index(request):
             data_form.accuracy = accuracy
 
             data_form.save()
+            messages.success(request, "Prediction was successfully Done !!!" )
             return redirect('results_page')
 
     else:
@@ -92,6 +93,7 @@ def index(request):
     
     return render(request, 'front/index.html', context)
 
+
 @login_required(login_url='landing_page')
 def results_page(request):
     results = Data.objects.all()
@@ -102,6 +104,24 @@ def results_page(request):
     }
     return render(request, 'predictions/prediction_result.html', context)
     
+
+
+@login_required(login_url='landing_page')
+def delete_result(request, id):
+    try:
+        result = Data.objects.get(id=id)
+        context = {}
+        if request.method == 'POST':
+            result.delete()
+            messages.success(request, "Prediction result deleted successfully !!!" )
+            return redirect('results_page')
+    except:
+        messages.error(request, "The prediction has already been deleted !!!" )
+        context = {}
+    return render(request, 'predictions/prediction_delete.html', context)
+
+
+
 @login_required(login_url='landing_page')
 def visualizations(request):
     return render(request, 'predictions/visualizations.html')
