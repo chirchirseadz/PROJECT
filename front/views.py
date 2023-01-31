@@ -61,7 +61,7 @@ def index(request):
             data_list.append(request.POST['precipitation'])
             data_list.append(request.POST['fishing'])
 
-                    
+        
             # changing the inputs to numpy data_array
             input_data_as_numpy_array = np.asanyarray(data_list)
 
@@ -87,7 +87,7 @@ def index(request):
         
     context = {
         'results': results,
-        'form': form
+        'form': form,
     }
     
     return render(request, 'front/index.html', context)
