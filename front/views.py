@@ -124,4 +124,8 @@ def delete_result(request, id):
 
 @login_required(login_url='landing_page')
 def visualizations(request):
-    return render(request, 'predictions/visualizations.html')
+    data = Data.objects.all()
+    context = {
+        'data': data
+    }
+    return render(request, 'predictions/visualizations.html', context)

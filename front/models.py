@@ -62,7 +62,7 @@ class Data(models.Model):
             
     )
     # county = models.IntegerField(choices=COUNTY, null=True)
-    population = models.PositiveBigIntegerField(null=True, default=1)
+    population = models.PositiveBigIntegerField(null=True)
     max_temp = models.IntegerField(null=True)
     min_temp = models.IntegerField(null=True)
     humidity = models.PositiveBigIntegerField(null=True)
