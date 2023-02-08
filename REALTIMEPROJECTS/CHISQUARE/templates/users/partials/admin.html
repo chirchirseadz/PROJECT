@@ -1,0 +1,170 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block content %}
+{% include 'partials/navbar.html' %}
+
+<link href="{% static 'assets1/css/style.css' %}" rel="stylesheet">
+<body>
+  <main>
+    <section class="section dashboard mt-4">
+     <h3 class="p-3 mt-5 text-secondary offset-2">Admin Dashboard</h3>
+      <div class="row ">
+           <div class="col-xxl-2"></div>
+          <!-- Users  Card -->
+          <div class="col-xxl-2 col-md-6">
+            <div class="card info-card sales-card">
+              <!-- This is the start of Users -->
+              <a href="{% url 'list_of_users' %}">
+                <div class="card-body">
+                  <h5 class="card-title">Users</h5>
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-people"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>{{number_of_users}}</h6>
+                      
+
+                    </div>
+                  </div>
+                </div>
+              </a>
+              
+            </div>
+          </div>
+          <!-- end of sales card  -->
+
+          <!-- Applied jobs  -->
+          <div class="col-xxl-2 col-md-6">
+            <div class="card info-card sales-card">
+              <a href="#appliedjobs">
+                <div class="card-body">
+                  <h5 class="card-title">Applied Jobs</h5>
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon text-success rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-archive"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>{{number_of_users}}</h6>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              
+            </div>
+          </div>
+
+          <!-- posted jobs  -->
+          <div class="col-xxl-2 col-md-6">
+            <div class="card info-card sales-card">
+              <!-- This is the start of Users -->
+              <a href="#posted  ">
+                <div class="card-body">
+                  <h5 class="card-title"> Posted Jobs</h5>
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-airplane-engines"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>{{number_of_users}}</h6>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              
+            </div>
+          </div>
+
+          <!-- All jobs jobs  -->
+           <div class="col-xxl-2 col-md-6">
+            <div class="card info-card sales-card">
+              <!-- This is the start of Users -->
+              <a href="#">
+                <div class="card-body">
+                  <h5 class="card-title">All Jobs</h5>
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon text text-warning rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-activity"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>{{number_of_users}}</h6>
+                      
+
+                    </div>
+                  </div>
+                </div>
+              </a>
+              
+            </div>
+          </div> 
+        </div>
+        <!-- End Left side columns -->
+
+
+        <div class="row">
+          <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <div class="card recent-sales overflow-auto">
+
+            <div class="card-body">
+              <h5 class="card-title">Recent Sales <span>| Today</span></h5>
+
+              <table class="table table-borderless datatable">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Customer</th>
+                    <th scope="col">Product</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row"><a href="#">#2457</a></th>
+                    <td>Brandon Jacob</td>
+                    <td><a href="#" class="text-primary">At praesentium minu</a></td>
+                    <td>$64</td>
+                    <td><span class="badge bg-success">Approved</span></td>
+                  </tr>
+                 
+                  
+                  <tr>
+                    <th scope="row"><a href="#">#2644</a></th>
+                    <td>Angus Grady</td>
+                    <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>
+                    <td>$67</td>
+                    <td><span class="badge bg-danger">Rejected</span></td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><a href="#">#2644</a></th>
+                    <td>Raheem Lehner</td>
+                    <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
+                    <td>$165</td>
+                    <td><span class="badge bg-success">Approved</span></td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
+
+          </div>
+        </div>
+        <div class="col-md-2"></div>
+        </div>  
+    </section>
+
+  </main>
+  <!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+ 
+  <!-- End Footer -->
+
+
+  
+</body>
+
+</html>
+
+{% endblock %}

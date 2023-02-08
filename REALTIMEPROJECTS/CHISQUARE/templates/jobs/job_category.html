@@ -1,0 +1,93 @@
+{% extends "partials/base.html" %}  
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}Category Page {% endblock%}
+
+{% block content %}
+
+{% include 'partials/navbar.html' %}
+
+<main>
+    <style>
+      #intro{
+        margin-top: -5%;
+      }
+      #row{
+        margin-left: 5%;
+      }
+      #card{
+        box-shadow: rgba(0, 0, 0, 0.157) 0px 19px 38px, rgba(0, 0, 0, 0.171) 0px 15px 12px;
+        transition: 0.6s;
+      }
+      #card:hover{
+        transition: 0.6s;
+        transform: translateY(10px);  
+        cursor: pointer;      
+      }
+    </style>
+   
+  
+      <!-- ======= Intro Single ======= -->
+<section id="intro" class="intro-single">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-lg-8">
+          <div class="title-single-box">
+            {% if job_count == 0 %}
+            <h5  class=" alert alert-danger  ">No jobs in this category !!!</h5>
+            {% else %}
+            <h5  class=" title-single mt-5 "> {{category.name|title}} Jobs</h5>
+            {% endif %}
+
+            <span class="color-text-a"></span>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-4">
+          <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="">Home</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                {{category.name|title}} jobs
+              </li>
+              
+            </ol>
+          </nav>
+          </div>
+      </div>     
+    </div>
+    <!-- ======= End Intro Single ======= -->
+<section class="property-grid grid">
+    <div class="container">
+        <div class="row" id="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-3 ">
+              {% for job in jobs %}
+                <div  id="card" class="card col-md-3 " style="width: 18rem;">
+                    <div class="card-body ">
+                    <h5 class="card-title">{{job.title|title}}</h5>
+                    <hr style="border: #000 2px solid;">
+                    <b><u class="text-dark">Job description:</u></b>
+                    <p class="card-text">{{job.job_desc | slice:':200'}}......</p>
+                    <u>Job budget:</u>
+                    <p class="card-text">ksh {{job.budget}}</p>            
+                    <a class="btn btn-success btn-block" href="{% url 'job_detail' job.id %}">View Job</a>
+                    </div>
+                </div>
+                {% endfor %} 
+            </div>
+        </div>
+    </div>
+
+        
+</section>
+
+<!-- End Property Grid Single-->
+
+</main>
+{% include 'partials/footer.html' %}  
+
+
+
+{% endblock %}

@@ -1,0 +1,85 @@
+{% load static %}
+<style>
+
+  #logo-text1{
+    color: #000;
+    font-size: 20px;
+  }
+  #logo-text{
+    font-size: 20px;
+  }
+  @media only screen and  (max-width: 600px) {
+    #logo-text1{
+    color: #000;
+    font-size: 12px;
+    }
+    #logo-text{
+      font-size: 12px;
+      color: #000;
+    }
+    
+  }
+        
+  
+  
+</style>
+<header id="header" class="fixed-top">
+  <div class="container d-flex align-items-center">
+    {% if user.is_authenticated %}
+    <h3  class="logo me-auto"><a href="{% url 'user-dashboard' %}"><span ><img src="{% static 'assets/img/logo1.png' %}" alt="" class="img-fluid" ></span><span style="color:#000;" id="logo-text1" >chi</span><span  id="logo-text" >-square</span></a></h3>
+    {% else %}
+    <h3  class="logo me-auto"><a href="{% url 'landing_page' %}"><span ><img src="{% static 'assets/img/logo1.png' %}" alt="" class="img-fluid" ></span><span style="color:#000;" id="logo-text1" >chi</span><span  id="logo-text" >-square</span></a></h3>
+    {% endif %}
+    <!-- Uncomment below if you prefer to use an image logo -->
+    <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+    
+    <nav id="navbar" class="navbar order-last order-lg-0">
+      <ul>
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'user-dashboard' %}" class="active">Home</a></li>
+        {% else %}
+        <li><a href="{% url 'landing_page' %}" class="active">Home</a></li>
+        {% endif %}
+
+        <li class="dropdown"><a href="#"><span>categories</span> <i class="bi bi-chevron-down"></i></a>
+          <ul>
+            
+            {% for category in area_of_specialization %}
+            <li><a href="{% url 'job_categories' category.id %}">{{category.name}}</a></li>
+            {% endfor %}
+          </ul> 
+        </li> 
+        <li><a href="{% url 'about' %}">About Us</a></li>
+       
+        
+      
+        {% if user.is_authenticated %} 
+        <li><a href="{% url 'user_profile' %}">{{user.username}} - Profile </a></li> 
+        <li><a href="{% url 'logout' %}">logout</a></li> 
+        {% else %}
+        <!-- <li><a class="text-danger" href="{% url 'login' %}">Login</a></li>  -->
+        <li class="dropdown"><a href="#"><span>Register As</span> <i class="bi bi-chevron-down"></i></a>
+          <ul>
+            <li><a href="{% url 'employer_signup' %}">Employer</a></li>
+            <li><a href="{% url 'employee_signup' %}">Employee</a></li>
+          </ul>
+        </li>
+        {% endif %}
+      </ul>
+      <li><a  href="{% url 'contact' %}">Contact</a></li> 
+      <i class="bi bi-list mobile-nav-toggle"></i>
+
+    </nav>
+    
+
+    <div class="header-social-links d-flex">
+      <a href="#" class="twitter"><i class="bu bi-twitter"></i></a>
+      <a href="#" class="facebook"><i class="bu bi-facebook"></i></a>
+      <a href="#" class="instagram"><i class="bu bi-instagram"></i></a>
+      <a href="#" class="linkedin"><i class="bu bi-linkedin"></i></i></a>
+    </div>
+  
+  </div>
+
+</header><!-- End Header -->
+

@@ -1,0 +1,114 @@
+{% extends "partials/base.html" %}  
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}Job Details{% endblock%}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% include 'partials/navbar.html' %}
+
+<style>
+       #intro{
+        margin-top: -5%;
+      }
+</style>
+ <!-- ======= Intro Single ======= -->
+<section id="intro" class="intro-single">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-lg-8">
+          <div class="title-single-box">
+            <h5  class=" title-single "> Job Details</h5>
+            <span class="color-text-a"></span>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-4">
+          <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="">Home</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                {{category.name|title}} jobs
+              </li>
+              
+            </ol>
+          </nav>
+         </div>
+      </div>     
+    </div>
+<!-- ======= End Intro Single ======= -->
+
+  <!-- Job Detail Start -->
+  <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container">
+        <div class="row gy-5 gx-4">
+            <div class="col-lg-7">
+                <div class="d-flex align-items-center mb-5">
+                   
+                    <div class="text-start ps-4">
+                        <h3 class="mb-3">{{job.title}}</h3>
+                        <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>{{job.location}}</span>
+                        <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>{{job.area_of_specialization}}</span>
+                        <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>Ksh {{job.budget}}</span>
+                    </div>
+                </div>
+
+                <div class="mb-5">
+                    <h4 class="mb-3">Job description</h4>
+                    <p>{{job.job_desc}}</p>
+                    
+                    
+                    <h4 class="mb-3">Qualifications</h4>
+                    <p>{{job.qualifications}}</p>
+                </div>
+
+                <div class="">
+                  {% if messages %}
+                    {% for msg in messages %}
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="alert alert-{{msg.tags}}">{{msg}}</div>
+                        </div>
+                      </div>
+                    {% endfor %}
+                  {% endif %} 
+                  <hr>
+                    <h4 class="mb-4 text-secondary">Apply For The Job</h4>
+                    <hr>
+                    <form class="mt-2" method="post">
+                        <div class="row g-3">
+                            {% csrf_token %}
+                            {{form|crispy}}
+                            <div class="col-12">
+                                <button class="btn btn-success w-100" type="submit">Apply Now</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="bg-light rounded p-5 mb-4 wow slideInUp" data-wow-delay="0.1s">
+                    <h4 class="mb-4">Job Summary</h4>
+                    <p><i class="fa fa-angle-right text-primary me-2"></i>Published On: {{job.date_posted}}</p>
+                    <p><i class="fa fa-angle-right text-primary me-2"></i>Vacancy: {{job.vacancy}}</p>
+                    <p><i class="fa fa-angle-right text-primary me-2"></i>Job Nature: {{job.terms_of_service}}</p>
+                    <p><i class="fa fa-angle-right text-primary me-2"></i>Salary: Ksh {{job.budget}}</p>
+                    <p><i class="fa fa-angle-right text-primary me-2"></i>Location: {{job.location}}</p>
+                    <p class="m-0"><i class="fa fa-angle-right text-primary me-2"></i>Date Line: {{job.dateline}}</p>
+                </div>
+                <div class="bg-light rounded p-5 wow slideInUp" data-wow-delay="0.1s">
+                    <h4 class="mb-4">Employer Details</h4>
+                    <a class="btn btn-primary btn-block" href="#">View Emloyer Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<!-- Job Detail End -->
+
+</section>
+{% include 'partials/footer.html' %}
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'partials/base.html' %}
+{% block title %}My dashboard {% endblock %}
+{% block content %} 
+
+{% if request.user.is_staff  and request.user.is_active %}
+
+{% include 'users/partials/admin.html' %}
+
+
+
+{% endif %}
+{% endblock %}
+
+
+
+

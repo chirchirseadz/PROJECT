@@ -1,0 +1,143 @@
+{% extends "partials/base.html" %}  
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}Post job Page {% endblock%}
+
+{% block content %}
+
+{% include 'partials/navbar.html' %}
+<section id="intro" class="intro-single ">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-lg-8">
+          <div class="title-single-box">
+            <h5  class=" title-single ">Post Job</h5>
+            <span class="color-text-a"></span>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-4">
+          <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="">Home</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                post job
+              </li>
+              
+            </ol>
+          </nav>
+         </div>
+         </div>     
+         <div class="row">
+            <div class="col-lg-9 mx-auto">
+                    {% if form.errors %}
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <div class="alert alert-danger alert-dismissable">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    <strong>{{ field.name }} {{ error|escape }}</strong>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                    {% endif %}
+                <form id="job-main-form" method="post" action="" class="job-add-form">
+                    {% csrf_token %}
+                    
+                    <div class="row p-3">
+                        <div class="col-lg-12 form-group text-success">
+                            <b>{{post_job_form.title|as_crispy_field}}</b>
+                        </div>
+                    </div>
+                    <div class="row p-3">
+                        <div class="col-lg-12 form-group text-success">
+                        <b>{{post_job_form.job_desc|as_crispy_field}}</b>
+                        </div>
+                    </div>
+                    <div class="row p-3">
+                        <div class="col-lg-6 form-group text-success">
+                            <b>{{post_job_form.location|as_crispy_field}}</b>
+                        </div>
+                        <div class="col-lg-6 form-group text-success">
+                            <b>{{post_job_form.terms_of_service|as_crispy_field}}</b>
+                        </div>
+                    </div>
+                    <div class="row p-3">
+                        <div class="col-lg-12 form-group text-success">
+                        <b>{{post_job_form.area_of_specialization|as_crispy_field}}</b>          
+                        </div>
+                    </div>
+                    <div class="row p-3">
+                        <div class="col-lg-12 form-group text-success">
+                        <b>{{post_job_form.qualifications|as_crispy_field}}</b>          
+                        </div>
+                    </div>
+                    <div class="row p-3">
+                        <div class="col-xl-6 form-group text-success">
+                            <b>{{post_job_form.vacancy|as_crispy_field}}</b>
+                        </div>
+                        <div class="col-xl-6 form-group text-success">
+                            <b>{{post_job_form.dateline|as_crispy_field}}</b>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <hr class="margin-bottom--big">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h4 style="text-align: center; text-transform: uppercase;" class="text-warning " >Company details</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                       
+                    </div>
+                    <div class="row p-3">
+                        <div class="col-lg-12 form-group text-success">
+                            <b>{{post_job_form.company_details|as_crispy_field}}</b>
+                        </div>
+                    </div>
+                    <div class="row p-3">
+                        <div class="col-lg-12 form-group text-success ">
+                            <b>{{post_job_form.company_website|as_crispy_field}}</b>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <hr>
+                            <div class="checkbox text-center">
+                                <label>
+                                    {{post_job_form.terms_and_conditions}} I agree with the Terms and conditions
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <hr>
+                            <button type="submit" class="btn btn-success"><i class="fa fa-magic"></i>
+                                Save and publish
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
+<!-- ======= End Intro Single ======= -->
+
+
+
+</section>
+
+
+
+
+
+{% endblock %}
