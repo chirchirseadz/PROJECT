@@ -11,6 +11,7 @@ def register(request):
         register_form = UserRegisterForm(request.POST)
         if register_form.is_valid():
             register_form.save()
+            return  redirect('index_page')
     else:
         register_form = UserRegisterForm()
     context = {

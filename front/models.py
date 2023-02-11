@@ -72,6 +72,8 @@ class Data(models.Model):
     results = models.CharField(max_length=10, null=True, blank=True)
     accuracy = models.CharField(max_length=10,null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True, null=True)
+    time = models.TimeField(auto_now_add=True, null=True)
+    
 
     class Meta:
         ordering = ['-date']

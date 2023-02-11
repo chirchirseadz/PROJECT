@@ -10,13 +10,11 @@ import numpy as np
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection  import train_test_split
-from sklearn import svm 
+from sklearn import svm
 from sklearn.metrics import accuracy_score
 import joblib
 
 # Create your views here.
-
-
 
 def landing_page(request):
     return render(request, 'front/landing_page.html')
@@ -75,7 +73,8 @@ def index(request):
 
             data_form.results = results
             accuracy = trainning_data_accuracy * 100
-
+            
+            print(results)
             data_form.accuracy = accuracy
 
             data_form.save()
@@ -105,7 +104,6 @@ def results_page(request):
     return render(request, 'predictions/prediction_result.html', context)
     
 
-
 @login_required(login_url='landing_page')
 def delete_result(request, id):
     try:
@@ -119,7 +117,6 @@ def delete_result(request, id):
         messages.error(request, "The prediction has already been deleted !!!" )
         context = {}
     return render(request, 'predictions/prediction_delete.html', context)
-
 
 
 @login_required(login_url='landing_page')

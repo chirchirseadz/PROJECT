@@ -1,0 +1,77 @@
+<div class="col-lg-12">
+    <div class="card">
+      <div class="card-body">
+        <h5 style="font-family:'Times New Roman', Times, serif; font-size: 120%;" class="card-title text-success offset-4">Temprature Prediction Variables And SVM accuracy</h5>
+
+        <!-- Column Chart -->
+        
+        <div id="columnChart"></div>
+        
+        <script>
+          document.addEventListener("DOMContentLoaded", () => {
+            new ApexCharts(document.querySelector("#columnChart"), {
+                
+              series: [{
+                name: 'Maximum Temprature',
+                data: [{%for data in data %} '{{data.max_temp}}', {% endfor %}]
+                // [76, 85, 101, 98, 87, 105, 91, 114, 94]
+              }, {
+                name: 'Minimum Temprature',
+                data: [{%for data in data %} '{{data.min_temp}}', {% endfor %}]
+              }, {
+                name: 'Rainfall',
+                data: [{%for data in data %} '{{data.rainfall}}', {% endfor %}]
+              },
+              {
+                name: 'svm Accuracy(%)',
+                data: [{%for data in data %} '{{data.accuracy}}', {% endfor %}]
+              }],
+
+              
+              chart: {
+                type: 'bar',
+                height: 350
+              },
+              plotOptions: {
+                bar: {
+                  horizontal: false,
+                  columnWidth: '55%',
+                  endingShape: 'rounded'
+                },
+              },
+              dataLabels: {
+                enabled: false
+              },
+              stroke: {
+                show: false,
+                width: 2,
+                colors: ['transparent']
+              },
+              xaxis: {
+                categories: [{% for data in data %} '{{data.time}}', {% endfor %}],
+              },
+              yaxis: {
+                title: {
+                  text: 'Temprature (degrees celcius) And ACCuracy'
+                }
+              },
+              fill: {
+                opacity: 1
+              },
+              tooltip: {
+                y: {
+                  formatter: function(val) {
+                    return + val + "" 
+                  }
+                }
+              }
+        
+            }).render();
+          });
+        </script>
+    
+        <!-- End Column Chart -->
+
+      </div>
+    </div>
+  </div>

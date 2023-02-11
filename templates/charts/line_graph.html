@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-body">
-      <h5 class="card-title">Line Chart</h5>
+      <h5 class="card-title">Line Graph to show Accuracy Against Population</h5>
 
       <!-- Line Chart -->
       <div id="lineChart"></div>
@@ -9,8 +9,8 @@
         document.addEventListener("DOMContentLoaded", () => {
           new ApexCharts(document.querySelector("#lineChart"), {
             series: [{
-              name: "Desktops",
-              data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+              name: "SVM Accuracy(%)",
+              data: [{% for data in data %} {{data.accuracy}}, {% endfor %}]
             }],
             chart: {
               height: 350,
@@ -32,8 +32,15 @@
               },
             },
             xaxis: {
-              categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
-            }
+              categories: [{% for data in data %} {{data.population}}, {% endfor %}],
+            },
+            
+            yaxis: {
+                title: {
+                  text: 'Accuracy Of the SVM'
+                }
+              },
+            
           }).render();
         });
       </script>

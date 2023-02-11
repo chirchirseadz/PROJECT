@@ -15,16 +15,17 @@
 </style>
 
 <div class="container mt-5">
-
+{% include 'partials/messages.html' %}
   <div class="row">
     <div class="col-md-4">
         <div class="card">
             <div class="card card-title p-1">
+                
                 <h3 style="font-family:'Times New Roman', Times, serif;" >Hunger prediction Variable Keys: </h3>
             </div>
             <div class="card card-body p-2">
                <h3 style="font-family:'Times New Roman', Times, serif;" class="text-secondary" >Rainfall</h3>
-               <table class="table">
+               <table  style="font-family:'Times New Roman', Times, serif;" class="table">
                 <thead>
                   <tr>
                     <th class="text-primary" scope="col ">Key </th>
@@ -63,7 +64,7 @@
         <div class="card card-body">
             <form method="post">
                 {% csrf_token %}
-                <div class="row g-3">
+                <div style="font-family:'Times New Roman', Times, serif;" class="row g-3">
                     
                     <div class="col-md-6">
                         <div class="form-floating text-success">
@@ -101,13 +102,8 @@
                         </div>
                     </div>
 
-                    
-
-
-
-                    
                     <div class="col-12">
-                        <button id="btn" class="btn btn-success w-100 py-3" type="submit">PREDICT</button>
+                        <button id="btn" class="btn btn-success w-100 py-3" type="submit" onclick="show();">PREDICT</button>
                     </div>
                 </div>
             </form>
@@ -118,6 +114,13 @@
   </div>
 </div>
 
+
+<script type="text/javascript">   
+    function show() {   
+        alert("Your data has been submited to SVM classifier for predictions ");   
+    }   
+
+</script>   
 
 
 {% endblock %}

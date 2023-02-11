@@ -6,16 +6,23 @@
 {% block  content %}
 {% include 'partials/navbar.html' %}
 <div class="container mt-5">
+    <h2 class="p-3 text-secondary" style="font-family:'Times New Roman', Times, serif; text-align: center;">General Data Visualization</h2>
     <div class="row">
-        <div class="col-md-6">
-            {% include 'charts/area_chart.html' %}
+        <div class="col-md-12">
+            {% include 'charts/column_chart.html' %}
         </div>
+    </div>
+    <div class="row">
+        <h2 class="p-3 text-secondary" style="font-family:'Times New Roman', Times, serif; text-align: center;">Population Validations with SVM classifier</h2>
         <div class="col-md-6">
             {% include 'charts/line_graph.html' %}
         </div>
+        <div class="col-md-6">
+            
+           {% include 'charts/vertical_barchart.html' %}
+            
+        </div>
     </div>
 </div>
-
-
 
 {% endblock %}

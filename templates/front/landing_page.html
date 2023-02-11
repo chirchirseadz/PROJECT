@@ -17,31 +17,25 @@
         </div>
    </div>
    <div class="row">
-    <div class="col-md-3"></div>
-    <div style="text-align:center; " class="col-md-5">
-        <p style=" font-size: 20px; margin-left: 100px;" >This is a system which makes predictions on counties That have been 
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="container">
+        <p style=" font-family: 'Times New Roman', Times, serif; font-size: 110%; text-align: center;" >
+            This is a system which makes predictions on counties That have been 
             affected by hunger. It uses a model tat is powered by machine learning algoritm Known as 
             Support Vector Machine (SVM)
         </p>
-       <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-4"></div>
-            {% if user.is_authenticated %}
-            <div class="col-md-6">
-                <a class="btn btn-success btn-block " href="{% url 'logout' %}">Logout</a>
-            </div>
-            
-            {% else %}
-            <div class="col-md-3">
-                <a class="btn btn-success " href="{% url 'register' %}">Register</a>
-            </div>
-            <div class="col-md-3">
-                <a class="btn btn-success btn-block float-left" href="{% url 'login' %}">Login</a>
-            </div>
-            {% endif %}
-            <div class="col-md-2"></div>
         </div>
-       </div>
+        <div class="row d-flex">
+          <div class="col-md-4"></div>
+          {% if user.is_authenticated %}
+            <a class="btn btn-success btn-block mt-2 " href="{% url 'logout' %}">Logout</a>
+            {% else %}
+            <a class="btn btn-success btn-block mt-2 " href="{% url 'login' %}">Login</a>
+            <a class="btn btn-success mt-2  " href="{% url 'register' %}">Register</a>
+            {% endif %}
+          <div class="col-md-2"></div>
+      </div>
     </div>
     <div class="col-md-4"></div>
    </div>
@@ -51,3 +45,8 @@
 
 
 {% endblock %}
+
+
+
+
+
